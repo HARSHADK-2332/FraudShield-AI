@@ -571,6 +571,51 @@ st.markdown(
         -webkit-text-fill-color: #f4fdff !important;
     }
 
+
+    /* -----------------------------------------------------
+       EXTRA INPUT VISIBILITY FIX
+       Make typed text unmistakably visible across browsers
+       and Streamlit/BaseWeb widgets.
+       ----------------------------------------------------- */
+    .stApp input,
+    .stApp textarea,
+    .stApp div[data-testid="stTextInput"] input,
+    .stApp div[data-testid="stTextArea"] textarea,
+    .stApp div[data-testid="stChatInput"] textarea {
+        background: rgba(2, 7, 20, 0.96) !important;
+        color: #ffffff !important;
+        -webkit-text-fill-color: #ffffff !important;
+        caret-color: #ffffff !important;
+        text-shadow: 0 0 8px rgba(0, 229, 255, 0.16) !important;
+    }
+
+    .stApp input:focus,
+    .stApp textarea:focus,
+    .stApp div[data-testid="stTextInput"] input:focus,
+    .stApp div[data-testid="stTextArea"] textarea:focus,
+    .stApp div[data-testid="stChatInput"] textarea:focus {
+        color: #ffffff !important;
+        -webkit-text-fill-color: #ffffff !important;
+        caret-color: #61f6ff !important;
+        outline: none !important;
+    }
+
+    /* Selectbox selected value and dropdown text */
+    .stApp [data-baseweb="select"] input,
+    .stApp [data-baseweb="select"] [role="combobox"],
+    .stApp [data-baseweb="select"] div,
+    .stApp [data-baseweb="select"] span {
+        color: #ffffff !important;
+        -webkit-text-fill-color: #ffffff !important;
+    }
+
+    /* Streamlit chat input */
+    .stApp [data-testid="stChatInput"] {
+        background: rgba(2, 7, 20, 0.96) !important;
+        border: 1px solid rgba(0, 229, 255, 0.34) !important;
+        box-shadow: 0 0 20px rgba(0, 229, 255, 0.10) !important;
+    }
+
     /* Checkbox / option text */
     .stApp [data-testid="stCheckbox"] label,
     .stApp [data-testid="stCheckbox"] label p,
