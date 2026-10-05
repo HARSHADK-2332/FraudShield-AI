@@ -2693,18 +2693,21 @@ elif st.session_state.page == "history":
         # RISK COUNTS
         # =================================================
 
+        # Database row order:
+        # id, input, score, risk, detection_type, timestamp
+
         high_risk = sum(
             1
             for scan in history
-            if "HIGH RISK" in str(scan[2])
+            if "HIGH RISK" in str(scan[3])
         )
 
         medium_risk = sum(
             1
             for scan in history
             if (
-                "MEDIUM RISK" in str(scan[2])
-                or "SUSPICIOUS" in str(scan[2])
+                "MEDIUM RISK" in str(scan[3])
+                or "SUSPICIOUS" in str(scan[3])
             )
         )
 
@@ -2712,8 +2715,8 @@ elif st.session_state.page == "history":
             1
             for scan in history
             if (
-                "LOW RISK" in str(scan[2])
-                or "LOWER RISK" in str(scan[2])
+                "LOW RISK" in str(scan[3])
+                or "LOWER RISK" in str(scan[3])
             )
         )
 
@@ -2831,29 +2834,53 @@ elif st.session_state.page == "history":
                     scan[0] if len(scan) > 0 else "N/A"
                 )
 
+                # Database row order:
+                # id, input, score, risk, detection_type, timestamp
+
+                detection_type = (
+                    str(scan[4]).upper()
+                    if len(scan) > 4
+                    else "UNKNOWN"
+                )
+
+                detection_label = {
+                    "URL": "🔗 URL",
+                    "CALL": "📞 CALL",
+                    "MESSAGE": "💬 MESSAGE",
+                }.get(
+                    detection_type,
+                    f"🔎 {detection_type}"
+                )
+
+                st.write(
+                    "🛡️ Detection:",
+                    detection_label
+                )
+
                 st.write(
                     "📌 Input:",
                     scan[1] if len(scan) > 1 else "N/A"
                 )
 
                 st.write(
-                    "🎯 Risk:",
-                    scan[2] if len(scan) > 2 else "N/A"
+                    "📊 Score:",
+                    f"{scan[2]}/100"
+                    if len(scan) > 2
+                    else "N/A"
                 )
 
-                if len(scan) > 3:
+                st.write(
+                    "🎯 Risk:",
+                    scan[3] if len(scan) > 3 else "N/A"
+                )
 
-                    st.write(
-                        "🔍 Type:",
-                        scan[3]
-                    )
-
-                if len(scan) > 4:
+                if len(scan) > 5:
 
                     st.write(
                         "🕒 Time:",
-                        scan[4]
+                        scan[5]
                     )
+
 
         if displayed_count == 0:
 
