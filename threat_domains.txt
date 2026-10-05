@@ -1,0 +1,15 @@
+fake-bank-test.com|Banking Phishing
+login-warning-test.com|Fake Login Warning
+free-prize-test.com|Prize Scam
+secure-account-test.com|Account Scam
+verify-payment-test.com|Payment Phishing
+urgent-login-test.com|Urgent Login Scam
+fake-reward-test.com|Reward Scam
+account-alert-test.com|Account Alert Scam
+online-banking-test.com|Banking Phishing
+password-reset-test.com|Password Reset Scam
+crypto-gift-test.com|Crypto Scam
+wallet-security-test.com|Wallet Scam
+payment-verification-test.com|Payment Phishing
+customer-support-test.com|Fake Support Scam
+free-offer-test.com|Offer Scam
