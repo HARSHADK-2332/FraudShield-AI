@@ -97,6 +97,7 @@ def get_history():
 
     cursor.execute("""
         SELECT
+            id,
             url,
             score,
             risk,
